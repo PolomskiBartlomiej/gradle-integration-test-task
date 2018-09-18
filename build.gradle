@@ -2,28 +2,42 @@ group 'gradle-task'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'groovy'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
+// https://discuss.gradle.org/t/adding-dependencies-to-a-configuration-created-from-a-custom-source-set/8801/2
+configurations {
+    intTestCompile.extendsFrom compile, testCompile
+    intTestCompile.extendsFrom runtime, integrationTestCompile, testRuntime
+    intTestImplementation.extendsFrom implementation
+    intTestRuntimeOnly.extendsFrom runtimeOnly
+}
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    intTestCompile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.15'
+    intTestCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
 }
 
 sourceSets {
     intTest {
-        compileClasspath += sourceSets.main.output
-        runtimeClasspath += sourceSets.main.output
+        groovy {
+            srcDir "src/intTest/groovy"
+        }
+
+        resources {
+            srcDir "src/intTest/resources"
+        }
+
+        compileClasspath += sourceSets.main.output + configurations.intTestCompile
+        runtimeClasspath += sourceSets.main.output + configurations.intTestRuntime
     }
 }
 
-configurations {
-    intTestImplementation.extendsFrom implementation
-    intTestRuntimeOnly.extendsFrom runtimeOnly
-}
 
 task integrationTest(type: Test) {
     description = 'Integration tests'

@@ -9,10 +9,9 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-// https://discuss.gradle.org/t/adding-dependencies-to-a-configuration-created-from-a-custom-source-set/8801/2
 configurations {
-    intTestCompile.extendsFrom compile, testCompile
-    intTestCompile.extendsFrom runtime, integrationTestCompile, testRuntime
+    intTestCompile.extendsFrom  testCompile
+    intTestCompile.extendsFrom integrationTestCompile
     intTestImplementation.extendsFrom implementation
     intTestRuntimeOnly.extendsFrom runtimeOnly
 }

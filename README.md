@@ -2,6 +2,7 @@
 The main goal of project is to provide implemenation of integration task in gradle
 
 # integration tests assumptions
+1. tests will be in groovy
 1. dedicated structure for source files and resources
 1. separate dependency configuration
 1. use classpath from main sources files
@@ -11,7 +12,7 @@ The main goal of project is to provide implemenation of integration task in grad
 1. run before `check`
 
 # implementation 
-1. dedicated structure for source files and resources (`src/intTest`)
+1. groovy + dedicated structure for source files and resources (`src/intTest`)
    ```
    intTest {
         groovy {

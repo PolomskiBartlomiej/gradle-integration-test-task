@@ -31,15 +31,14 @@ The main goal of project is to provide implemenation of integration task in grad
      intTestImplementation.extendsFrom implementation
      intTestRuntimeOnly.extendsFrom runtimeOnly
    }
-   ```
-   **`configurations` should be before `dependencies` sections**
-   ```
+   
    dependencies {
        ...
        intTestCompile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.15'
        intTestCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
     }
     ```
+    _Remark_: **`configurations` should be before `dependencies` sections**
 1. use classpath from main sources files
    ```
    sourceSets {

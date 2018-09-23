@@ -2,7 +2,7 @@
 The main goal of project is to provide implemenation of integration task in gradle
 
 # integration tests assumptions
-1. tests will be in groovy
+1. language: groovy
 1. dedicated structure for source files and resources
 1. separate dependency configuration
 1. use classpath from main sources files

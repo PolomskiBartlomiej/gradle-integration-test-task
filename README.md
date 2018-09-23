@@ -38,7 +38,7 @@ The main goal of project is to provide implemenation of integration task in grad
        intTestCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
     }
     ```
-    _Remark_: **`configurations` should be before `dependencies` sections**
+    _Remark_: **`configurations` should be before `dependencies` section**
 1. use classpath from main sources files
    ```
    sourceSets {

@@ -50,27 +50,27 @@ The main goal of project is to provide implemenation of integration task in grad
    }
    ```
 1. unique task for running integration tests
-  ```
-  task integrationTest(type: Test) {
-    ...
-  }
-  ```
+   ```
+   task integrationTest(type: Test) {
+     ...
+   }
+   ```
 1. `verification` task group
-  ```
-   task integrationTest(type: Test) {
-      description = 'Integration tests'
-      group = 'verification'
-        ...
-  }
-  ```
+   ```
+    task integrationTest(type: Test) {
+       description = 'Integration tests'
+       group = 'verification'
+       ...
+   }
+   ```
 1. excluded from incremental gradle build mechanism
-  ```
-   task integrationTest(type: Test) {
-      ...
-      outputs.upToDateWhen {false}
-  }
-  ```
+   ```
+    task integrationTest(type: Test) {
+       ...
+       outputs.upToDateWhen {false}
+   }
+   ```
 1. run before `check`
-  ```
-    check.dependsOn integrationTest
-  ```
+   ```
+     check.dependsOn integrationTest
+   ```
